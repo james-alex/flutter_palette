@@ -24,7 +24,7 @@ import 'package:flutter_palette/flutter_palette.dart`;
 A [ColorPalette] can be created directly by constructing it with a list of
 [ColorModel]s, or can be generated with one of its factory constructors.
 
-[ColorPalette] has 6 factory constructors: [empty], [adjacent], [polyad],
+[ColorPalette] has 7 factory constructors: [from], [empty], [adjacent], [polyad],
 [random], [splitComplimentary], and [opposites].
 
 ```dart
