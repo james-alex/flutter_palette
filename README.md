@@ -110,8 +110,8 @@ ColorPalette.opposites(colorPalette);
 
 ## Colors
 
-The color palette can be viewed as a [List<ColorModel>] by referencing the
-[colors] getter, or as a [List<Color>] with the [toColors] method.
+The color palette can be viewed as a [List&lt;ColorModel&gt;] by referencing the
+[colors] getter, or as a [List&lt;Color&gt;] with the [toColors] method.
 
 ```dart
 /// Construct a [ColorPalette] from a list of [RgbColor]s.
