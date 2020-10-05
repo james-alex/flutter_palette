@@ -60,14 +60,14 @@ class ColorPalette extends cp.ColorPalette {
   /// [saturationVariability] and [brightnessVariability] both default to `0`,
   /// must be `>= 0 && <= 100`, and must not be `null`.
   factory ColorPalette.adjacent(
-    Color color, {
+    Color seed, {
     int numberOfColors = 5,
     num distance = 30,
     num hueVariability = 0,
     num saturationVariability = 0,
     num brightnessVariability = 0,
   }) {
-    assert(color != null);
+    assert(seed != null);
     assert(distance != null);
     assert(numberOfColors != null && numberOfColors > 0);
     assert(
@@ -105,13 +105,13 @@ class ColorPalette extends cp.ColorPalette {
   /// [saturationVariability] and [brightnessVariability] both default to `0`,
   /// must be `>= 0 && <= 100`, and must not be `null`.
   factory ColorPalette.polyad(
-    Color color, {
+    Color seed, {
     int numberOfColors = 5,
     num hueVariability = 0,
     num saturationVariability = 0,
     num brightnessVariability = 0,
   }) {
-    assert(color != null);
+    assert(seed != null);
     assert(numberOfColors != null && numberOfColors > 0);
     assert(
         hueVariability != null && hueVariability >= 0 && hueVariability <= 360);
@@ -227,14 +227,14 @@ class ColorPalette extends cp.ColorPalette {
   /// [saturationVariability] and [brightnessVariability] both default to `0`,
   /// must be `>= 0 && <= 100`, and must not be `null`.
   factory ColorPalette.splitComplimentary(
-    Color color, {
+    Color seed, {
     int numberOfColors = 3,
     num distance = 30,
     num hueVariability = 0,
     num saturationVariability = 0,
     num brightnessVariability = 0,
   }) {
-    assert(color != null);
+    assert(seed != null);
     assert(numberOfColors != null && numberOfColors > 0);
     assert(
         hueVariability != null && hueVariability >= 0 && hueVariability <= 360);
