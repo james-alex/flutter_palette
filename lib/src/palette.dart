@@ -52,7 +52,7 @@ class ColorPalette extends cp.ColorPalette {
   ///
   /// [hueVariability], [saturationVariability], and [brightnessVariability],
   /// if `> 0`, add a degree of randomness to the selected color's hue,
-  /// saturation, and brightness (HSV's value) values, respectively.
+  /// saturation, and brightness (HSB's value) values, respectively.
   ///
   /// [hueVariability] defaults to `0`, must be `>= 0 && <= 360`,
   /// and must not be `null`.
@@ -97,7 +97,7 @@ class ColorPalette extends cp.ColorPalette {
   ///
   /// [hueVariability], [saturationVariability], and [brightnessVariability],
   /// if `> 0`, add a degree of randomness to the selected color's hue,
-  /// saturation, and brightness (HSV's value) values, respectively.
+  /// saturation, and brightness (HSB's value) values, respectively.
   ///
   /// [hueVariability] defaults to `0`, must be `>= 0 && <= 360`,
   /// and must not be `null`.
@@ -219,7 +219,7 @@ class ColorPalette extends cp.ColorPalette {
   ///
   /// [hueVariability], [saturationVariability], and [brightnessVariability],
   /// if `> 0`, add a degree of randomness to the selected color's hue,
-  /// saturation, and brightness (HSV's value) values, respectively.
+  /// saturation, and brightness (HSB's value) values, respectively.
   ///
   /// [hueVariability] defaults to `0`, must be `>= 0 && <= 360`,
   /// and must not be `null`.
