@@ -1,7 +1,6 @@
 # flutter_palette
 
 [![pub package](https://img.shields.io/pub/v/flutter_palette.svg)](https://pub.dartlang.org/packages/flutter_palette)
-[![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart)
 
 A package for creating, generating, and interfacing with color palettes.
 
