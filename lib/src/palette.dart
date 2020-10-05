@@ -2,6 +2,7 @@ import 'package:flutter/painting.dart' show Color;
 import 'package:palette/palette.dart' as cp;
 import 'package:palette/palette.dart' show ColorSpace;
 import 'package:flutter_color_models/flutter_color_models.dart';
+import 'helpers/cast_to_flutter_palette.dart' as ctfp;
 
 /// Contains a [List] of [ColorModel]s.
 ///
@@ -66,6 +67,9 @@ class ColorPalette extends cp.ColorPalette {
     num hueVariability = 0,
     num saturationVariability = 0,
     num brightnessVariability = 0,
+    bool perceivedBrightness = true,
+    bool growable = true,
+    bool unique = false,
   }) {
     assert(seed != null);
     assert(distance != null);
@@ -78,14 +82,22 @@ class ColorPalette extends cp.ColorPalette {
     assert(brightnessVariability != null &&
         brightnessVariability >= 0 &&
         brightnessVariability <= 100);
+    assert(perceivedBrightness != null);
+    assert(growable != null);
+    assert(unique != null);
 
-    return _cast(cp.ColorPalette.adjacent(
-      RgbColor.fromColor(color),
-      numberOfColors: numberOfColors,
-      distance: distance,
-      hueVariability: hueVariability,
-      saturationVariability: saturationVariability,
-      brightnessVariability: brightnessVariability,
+    return ColorPalette(ctfp.cast(
+      cp.ColorPalette.adjacent(
+        RgbColor.fromColor(seed),
+        numberOfColors: numberOfColors,
+        distance: distance,
+        hueVariability: hueVariability,
+        saturationVariability: saturationVariability,
+        brightnessVariability: brightnessVariability,
+        perceivedBrightness: perceivedBrightness,
+      ),
+      growable: growable,
+      unique: unique,
     ));
   }
 
@@ -110,6 +122,10 @@ class ColorPalette extends cp.ColorPalette {
     num hueVariability = 0,
     num saturationVariability = 0,
     num brightnessVariability = 0,
+    bool perceivedBrightness = true,
+    bool clockwise = true,
+    bool growable = true,
+    bool unique = false,
   }) {
     assert(seed != null);
     assert(numberOfColors != null && numberOfColors > 0);
@@ -121,13 +137,23 @@ class ColorPalette extends cp.ColorPalette {
     assert(brightnessVariability != null &&
         brightnessVariability >= 0 &&
         brightnessVariability <= 100);
+    assert(perceivedBrightness != null);
+    assert(clockwise != null);
+    assert(growable != null);
+    assert(unique != null);
 
-    return _cast(cp.ColorPalette.polyad(
-      RgbColor.fromColor(color),
-      numberOfColors: numberOfColors,
-      hueVariability: hueVariability,
-      saturationVariability: saturationVariability,
-      brightnessVariability: brightnessVariability,
+    return ColorPalette(ctfp.cast(
+      cp.ColorPalette.polyad(
+        RgbColor.fromColor(seed),
+        numberOfColors: numberOfColors,
+        hueVariability: hueVariability,
+        saturationVariability: saturationVariability,
+        brightnessVariability: brightnessVariability,
+        perceivedBrightness: perceivedBrightness,
+        clockwise: clockwise,
+      ),
+      growable: growable,
+      unique: unique,
     ));
   }
 
@@ -164,17 +190,22 @@ class ColorPalette extends cp.ColorPalette {
   /// be `null`.
   factory ColorPalette.random(
     int numberOfColors, {
+    ColorSpace colorSpace = ColorSpace.rgb,
     num minHue = 0,
     num maxHue = 360,
     num minSaturation = 0,
     num maxSaturation = 100,
     num minBrightness = 0,
     num maxBrightness = 100,
+    bool perceivedBrightness = true,
     bool distributeHues = true,
     num distributionVariability,
-    ColorSpace colorSpace = ColorSpace.rgb,
+    bool clockwise = true,
+    bool growable = true,
+    bool unique = false,
   }) {
     assert(numberOfColors != null && numberOfColors > 0);
+    assert(colorSpace != null);
     assert(minHue != null && minHue >= 0 && minHue <= 360);
     assert(maxHue != null && maxHue >= 0 && maxHue <= 360);
     assert(minSaturation != null &&
@@ -190,19 +221,27 @@ class ColorPalette extends cp.ColorPalette {
         maxBrightness >= minBrightness &&
         maxBrightness <= 100);
     assert(distributeHues != null);
-    assert(colorSpace != null);
+    assert(clockwise != null);
+    assert(growable != null);
+    assert(unique != null);
 
-    return _cast(cp.ColorPalette.random(
-      numberOfColors,
-      minHue: minHue,
-      maxHue: maxHue,
-      minSaturation: minSaturation,
-      maxSaturation: maxSaturation,
-      minBrightness: minBrightness,
-      maxBrightness: maxBrightness,
-      distributeHues: distributeHues,
-      distributionVariability: distributionVariability,
-      colorSpace: colorSpace,
+    return ColorPalette(ctfp.cast(
+      cp.ColorPalette.random(
+        numberOfColors,
+        colorSpace: colorSpace,
+        minHue: minHue,
+        maxHue: maxHue,
+        minSaturation: minSaturation,
+        maxSaturation: maxSaturation,
+        minBrightness: minBrightness,
+        maxBrightness: maxBrightness,
+        perceivedBrightness: perceivedBrightness,
+        distributeHues: distributeHues,
+        distributionVariability: distributionVariability,
+        clockwise: clockwise,
+      ),
+      growable: growable,
+      unique: unique,
     ));
   }
 
@@ -233,6 +272,9 @@ class ColorPalette extends cp.ColorPalette {
     num hueVariability = 0,
     num saturationVariability = 0,
     num brightnessVariability = 0,
+    bool perceivedBrightness = true,
+    bool growable = true,
+    bool unique = false,
   }) {
     assert(seed != null);
     assert(numberOfColors != null && numberOfColors > 0);
@@ -244,14 +286,22 @@ class ColorPalette extends cp.ColorPalette {
     assert(brightnessVariability != null &&
         brightnessVariability >= 0 &&
         brightnessVariability <= 100);
+    assert(perceivedBrightness != null);
+    assert(growable != null);
+    assert(unique != null);
 
-    return _cast(cp.ColorPalette.splitComplimentary(
-      RgbColor.fromColor(color),
-      numberOfColors: numberOfColors,
-      distance: distance,
-      hueVariability: hueVariability,
-      saturationVariability: saturationVariability,
-      brightnessVariability: brightnessVariability,
+    return ColorPalette(ctfp.cast(
+      cp.ColorPalette.splitComplimentary(
+        RgbColor.fromColor(seed),
+        numberOfColors: numberOfColors,
+        distance: distance,
+        hueVariability: hueVariability,
+        saturationVariability: saturationVariability,
+        brightnessVariability: brightnessVariability,
+        perceivedBrightness: perceivedBrightness,
+      ),
+      growable: growable,
+      unique: unique,
     ));
   }
 
@@ -271,22 +321,22 @@ class ColorPalette extends cp.ColorPalette {
   factory ColorPalette.opposites(
     ColorPalette colorPalette, {
     bool insertOpposites = true,
+    bool growable = true,
+    bool unique = false,
   }) {
     assert(colorPalette != null);
     assert(insertOpposites != null);
+    assert(growable != null);
+    assert(unique != null);
 
-    return _cast(cp.ColorPalette.opposites(
-      colorPalette,
-      insertOpposites: insertOpposites,
+    return ColorPalette(ctfp.cast(
+      cp.ColorPalette.opposites(
+        colorPalette,
+        insertOpposites: insertOpposites,
+      ),
+      growable: growable,
+      unique: unique,
     ));
-  }
-
-  /// Casts [colorPalette] from the `palette` package's [ColorPalette] class
-  /// to the `flutter_palette` package's [ColorPalette] class.
-  static ColorPalette _cast(cp.ColorPalette colorPalette) {
-    assert(colorPalette != null);
-
-    return ColorPalette(colorPalette.colors);
   }
 
   /// Returns the concatenation of this palette's colors and [other]s'.
