@@ -3,10 +3,6 @@ import 'package:palette/palette.dart' as cp;
 import 'package:palette/palette.dart' show ColorSpace;
 import 'package:flutter_color_models/flutter_color_models.dart';
 
-export 'package:palette/palette.dart'
-    show ColorSpace, ColorProperty, ColorSortingDirection;
-export 'package:flutter_color_models/flutter_color_models.dart';
-
 /// Contains a [List] of [ColorModel]s.
 ///
 /// Has constructors for generating new color palettes, as well as methods
