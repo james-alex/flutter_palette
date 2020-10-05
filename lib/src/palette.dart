@@ -14,9 +14,12 @@ class ColorPalette extends cp.ColorPalette {
   /// and operators for modifying and extracting colors from the palette.
   ///
   /// [colors] must not be `null`.
-  const ColorPalette(List<ColorModel> colors)
+  const ColorPalette(this.colors)
       : assert(colors != null),
         super(colors);
+
+  @override
+  final List<ColorModel> colors;
 
   /// Returns the color palette as a list of [Color]s.
   List<Color> toColors() => colors.map(toColor).toList();
