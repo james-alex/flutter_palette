@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' show Color;
+import 'package:flutter/painting.dart' show Color;
 import 'package:palette/palette.dart' as cp;
 import 'package:palette/palette.dart' show ColorSpace;
 import 'package:flutter_color_models/flutter_color_models.dart';
