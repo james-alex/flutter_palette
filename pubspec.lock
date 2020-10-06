@@ -101,7 +101,7 @@ packages:
       name: palette
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.2.0+1"
   path:
     dependency: transitive
     description:
