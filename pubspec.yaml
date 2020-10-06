@@ -15,7 +15,7 @@ dependencies:
   flutter_color_models: ^0.3.3+1
   meta: ^1.1.8
   palette: ^0.2.0
-  unique_list: ^0.1.2
+  unique_list: ^0.1.2+1
 
 dev_dependencies:
   flutter_test:

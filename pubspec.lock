@@ -176,7 +176,7 @@ packages:
       name: unique_list
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.2"
+    version: "0.1.2+1"
   vector_math:
     dependency: transitive
     description:
