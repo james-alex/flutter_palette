@@ -1,8 +1,9 @@
 import 'package:flutter/painting.dart' show Color;
+import 'package:flutter_color_models/flutter_color_models.dart';
+import 'package:meta/meta.dart';
 import 'package:palette/palette.dart' as cp;
 import 'package:palette/palette.dart' show ColorSpace;
-import 'package:flutter_color_models/flutter_color_models.dart';
-import 'helpers/cast_to_flutter_palette.dart' as ctfp;
+import 'package:unique_list/unique_list.dart';
 
 /// Contains a [List] of [ColorModel]s.
 ///
@@ -86,7 +87,7 @@ class ColorPalette extends cp.ColorPalette {
     assert(growable != null);
     assert(unique != null);
 
-    return ColorPalette(ctfp.cast(
+    return ColorPalette(_cast(
       cp.ColorPalette.adjacent(
         RgbColor.fromColor(seed),
         numberOfColors: numberOfColors,
@@ -142,7 +143,7 @@ class ColorPalette extends cp.ColorPalette {
     assert(growable != null);
     assert(unique != null);
 
-    return ColorPalette(ctfp.cast(
+    return ColorPalette(_cast(
       cp.ColorPalette.polyad(
         RgbColor.fromColor(seed),
         numberOfColors: numberOfColors,
@@ -225,7 +226,7 @@ class ColorPalette extends cp.ColorPalette {
     assert(growable != null);
     assert(unique != null);
 
-    return ColorPalette(ctfp.cast(
+    return ColorPalette(_cast(
       cp.ColorPalette.random(
         numberOfColors,
         colorSpace: colorSpace,
@@ -290,7 +291,7 @@ class ColorPalette extends cp.ColorPalette {
     assert(growable != null);
     assert(unique != null);
 
-    return ColorPalette(ctfp.cast(
+    return ColorPalette(_cast(
       cp.ColorPalette.splitComplimentary(
         RgbColor.fromColor(seed),
         numberOfColors: numberOfColors,
@@ -329,7 +330,7 @@ class ColorPalette extends cp.ColorPalette {
     assert(growable != null);
     assert(unique != null);
 
-    return ColorPalette(ctfp.cast(
+    return ColorPalette(_cast(
       cp.ColorPalette.opposites(
         colorPalette,
         insertOpposites: insertOpposites,
@@ -361,4 +362,48 @@ class ColorPalette extends cp.ColorPalette {
 
     return ColorPalette(this.colors + colors);
   }
+
+  /// Casts the colors in [palette] from the [color_model] package's
+  /// [ColorModel] class, to the [flutter_color_model] package's [ColorModel]
+  /// class.
+  static List<ColorModel> _cast(
+    cp.ColorPalette palette, {
+    @required bool growable,
+    @required bool unique,
+  }) {
+    assert(palette != null);
+    assert(growable != null);
+    assert(unique != null);
+
+    final colors = palette.colors.map<ColorModel>((color) {
+      ColorModel castColor;
+
+      final colorValues = color.toListWithAlpha();
+
+      if (color is cp.CmykColor) {
+        castColor = CmykColor.fromList(colorValues);
+      } else if (color is cp.HsbColor) {
+        castColor = HsbColor.fromList(colorValues);
+      } else if (color is cp.HsiColor) {
+        castColor = HsiColor.fromList(colorValues);
+      } else if (color is cp.HslColor) {
+        castColor = HslColor.fromList(colorValues);
+      } else if (color is cp.HspColor) {
+        castColor = HspColor.fromList(colorValues);
+      } else if (color is cp.LabColor) {
+        castColor = LabColor.fromList(colorValues);
+      } else if (color is cp.RgbColor) {
+        castColor = RgbColor.fromList(color.toPreciseListWithAlpha());
+      } else if (color is cp.XyzColor) {
+        castColor = XyzColor.fromList(colorValues);
+      }
+
+      return castColor;
+    });
+
+    return unique
+        ? UniqueList<ColorModel>.of(colors, growable: growable)
+        : List<ColorModel>.of(colors, growable: growable);
+  }
+
 }
