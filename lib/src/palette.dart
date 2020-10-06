@@ -24,8 +24,8 @@ class ColorPalette extends cp.ColorPalette {
   final List<ColorModel> colors;
 
   /// Returns the color palette as a list of [Color]s.
-  List<Color> toColors({bool growable = true}) => colors.map<Color>(
-      (color) => color.toColor()).toList(growable: growable);
+  List<Color> toColors({bool growable = true}) =>
+      colors.map<Color>((color) => color.toColor()).toList(growable: growable);
 
   @override
   ColorPalette getRange(int start, int end) =>
@@ -405,5 +405,4 @@ class ColorPalette extends cp.ColorPalette {
         ? UniqueList<ColorModel>.of(colors, growable: growable)
         : List<ColorModel>.of(colors, growable: growable);
   }
-
 }
