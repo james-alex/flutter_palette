@@ -1,6 +1,7 @@
 # flutter_palette
 
-[![pub package](https://img.shields.io/pub/v/flutter_palette.svg)](https://pub.dartlang.org/packages/flutter_palette)
+__NOTICE: This repo has been merged into the [palette](https://github.com/james-alex/palette)
+repo and is being maintained there.__
 
 A package for creating, generating, and interfacing with color palettes.
 
