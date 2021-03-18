@@ -69,10 +69,8 @@ class ColorPalette extends cp.ColorPalette {
   }) {
     assert(numberOfColors > 0);
     assert(hueVariability >= 0 && hueVariability <= 360);
-    assert(saturationVariability >= 0 &&
-        saturationVariability <= 100);
-    assert(brightnessVariability >= 0 &&
-        brightnessVariability <= 100);
+    assert(saturationVariability >= 0 && saturationVariability <= 100);
+    assert(brightnessVariability >= 0 && brightnessVariability <= 100);
     return ColorPalette(_cast(
       cp.ColorPalette.adjacent(
         RgbColor.fromColor(seed),
@@ -116,10 +114,8 @@ class ColorPalette extends cp.ColorPalette {
   }) {
     assert(numberOfColors > 0);
     assert(hueVariability >= 0 && hueVariability <= 360);
-    assert(saturationVariability >= 0 &&
-        saturationVariability <= 100);
-    assert(brightnessVariability >= 0 &&
-        brightnessVariability <= 100);
+    assert(saturationVariability >= 0 && saturationVariability <= 100);
+    assert(brightnessVariability >= 0 && brightnessVariability <= 100);
     return ColorPalette(_cast(
       cp.ColorPalette.polyad(
         RgbColor.fromColor(seed),
@@ -185,14 +181,10 @@ class ColorPalette extends cp.ColorPalette {
     assert(numberOfColors > 0);
     assert(minHue >= 0 && minHue <= 360);
     assert(maxHue >= 0 && maxHue <= 360);
-    assert(minSaturation >= 0 &&
-        minSaturation <= maxSaturation);
-    assert(maxSaturation >= minSaturation &&
-        maxSaturation <= 100);
-    assert(minBrightness >= 0 &&
-        minBrightness <= maxBrightness);
-    assert(maxBrightness >= minBrightness &&
-        maxBrightness <= 100);
+    assert(minSaturation >= 0 && minSaturation <= maxSaturation);
+    assert(maxSaturation >= minSaturation && maxSaturation <= 100);
+    assert(minBrightness >= 0 && minBrightness <= maxBrightness);
+    assert(maxBrightness >= minBrightness && maxBrightness <= 100);
     return ColorPalette(_cast(
       cp.ColorPalette.random(
         numberOfColors,
@@ -246,10 +238,8 @@ class ColorPalette extends cp.ColorPalette {
   }) {
     assert(numberOfColors > 0);
     assert(hueVariability >= 0 && hueVariability <= 360);
-    assert(saturationVariability >= 0 &&
-        saturationVariability <= 100);
-    assert(brightnessVariability >= 0 &&
-        brightnessVariability <= 100);
+    assert(saturationVariability >= 0 && saturationVariability <= 100);
+    assert(brightnessVariability >= 0 && brightnessVariability <= 100);
     return ColorPalette(_cast(
       cp.ColorPalette.splitComplimentary(
         RgbColor.fromColor(seed),
