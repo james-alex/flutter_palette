@@ -1,6 +1,5 @@
 import 'dart:math' show Random;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_palette/flutter_palette.dart';
 
 /// The colors used for testing.
@@ -35,9 +34,7 @@ void main() {
   group('Palette Generators', () {
     group('Adjacent', () {
       group('Uniform', () {
-        void tester({@required bool growable}) {
-          assert(growable != null);
-
+        void tester({required bool growable}) {
           for (var i = 3; i < _testColors.length; i++) {
             final color = RgbColor.fromColor(_testColors[i]);
 
@@ -82,7 +79,7 @@ void main() {
       });
 
       group('Variable', () {
-        void tester({@required bool growable}) {
+        void tester({required bool growable}) {
           assert(growable != null);
 
           for (var i = 3; i < _testColors.length; i++) {
@@ -141,7 +138,7 @@ void main() {
 
     group('Polyad', () {
       group('Uniform', () {
-        void tester({@required bool growable}) {
+        void tester({required bool growable}) {
           assert(growable != null);
 
           for (var i = 3; i < _testColors.length; i++) {
@@ -178,7 +175,7 @@ void main() {
       });
 
       group('Variable', () {
-        void tester({@required bool growable}) {
+        void tester({required bool growable}) {
           assert(growable != null);
 
           for (var i = 3; i < _testColors.length; i++) {
@@ -230,7 +227,7 @@ void main() {
     });
 
     group('Random', () {
-      void tester({@required bool growable}) {
+      void tester({required bool growable}) {
         assert(growable != null);
 
         final rng = Random();
@@ -288,7 +285,7 @@ void main() {
 
     group('Split Complimentary', () {
       group('Uniform', () {
-        void tester({@required bool growable}) {
+        void tester({required bool growable}) {
           assert(growable != null);
 
           for (var i = 3; i < _testColors.length; i++) {
@@ -338,7 +335,7 @@ void main() {
       });
 
       group('Variable', () {
-        void tester({@required bool growable}) {
+        void tester({required bool growable}) {
           assert(growable != null);
 
           for (var i = 3; i < _testColors.length; i++) {
@@ -401,7 +398,7 @@ void main() {
 
     group('Opposites', () {
       group('Inserted', () {
-        void tester({@required bool growable}) {
+        void tester({required bool growable}) {
           assert(growable != null);
 
           final colorPalette = ColorPalette.opposites(
@@ -430,7 +427,7 @@ void main() {
       });
 
       group('Appended', () {
-        void tester({@required bool growable}) {
+        void tester({required bool growable}) {
           assert(growable != null);
 
           final colorPalette = ColorPalette.opposites(
@@ -476,7 +473,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.brightest);
 
-        num lastBrightness;
+        num? lastBrightness;
 
         for (var color in colorPalette.colors) {
           final brightness = color.toHspColor().perceivedBrightness;
@@ -503,7 +500,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.dimmest);
 
-        num lastBrightness;
+        num? lastBrightness;
 
         for (var color in colorPalette.colors) {
           final brightness = color.toHspColor().perceivedBrightness;
@@ -530,7 +527,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.lightest);
 
-        num lastLightness;
+        num? lastLightness;
 
         for (var color in colorPalette.colors) {
           final lightness = color.toHslColor().lightness;
@@ -557,7 +554,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.darkest);
 
-        num lastLightness;
+        num? lastLightness;
 
         for (var color in colorPalette.colors) {
           final lightness = color.toHslColor().lightness;
@@ -584,7 +581,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.mostIntense);
 
-        num lastIntensity;
+        num? lastIntensity;
 
         for (var color in colorPalette.colors) {
           final intensity = color.toHsiColor().intensity;
@@ -611,7 +608,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.leastIntense);
 
-        num lastIntensity;
+        num? lastIntensity;
 
         for (var color in colorPalette.colors) {
           final intensity = color.toHsiColor().intensity;
@@ -638,7 +635,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.deepest);
 
-        num lastSaturation;
+        num? lastSaturation;
 
         for (var color in colorPalette.colors) {
           final saturation = color.saturation;
@@ -665,7 +662,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.dullest);
 
-        num lastSaturation;
+        num? lastSaturation;
 
         for (var color in colorPalette.colors) {
           final saturation = color.saturation;
@@ -692,7 +689,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.richest);
 
-        num lastValue;
+        num? lastValue;
 
         for (var color in colorPalette.colors) {
           final hsb = color.toHsbColor();
@@ -721,7 +718,7 @@ void main() {
 
         colorPalette.sortBy(ColorSortingProperty.muted);
 
-        num lastValue;
+        num? lastValue;
 
         for (var color in colorPalette.colors) {
           final hsb = color.toHsbColor();
@@ -766,7 +763,7 @@ void main() {
         for (var j = 0; j < colorProperties.length; j++) {
           colorPalette.sortBy(colorProperties[j]);
 
-          num lastDistance;
+          num? lastDistance;
 
           for (var color in colorPalette.colors) {
             final distance = _calculateDistance(color.hue, j * 30);

@@ -1,6 +1,5 @@
 import 'package:flutter/painting.dart' show Color;
 import 'package:flutter_color_models/flutter_color_models.dart';
-import 'package:meta/meta.dart';
 import 'package:palette/palette.dart' as cp;
 import 'package:palette/palette.dart' show ColorSpace;
 import 'package:unique_list/unique_list.dart';
@@ -16,9 +15,7 @@ class ColorPalette extends cp.ColorPalette {
   /// and operators for modifying and extracting colors from the palette.
   ///
   /// [colors] must not be `null`.
-  const ColorPalette(this.colors)
-      : assert(colors != null),
-        super(colors);
+  const ColorPalette(this.colors) : super(colors);
 
   @override
   final List<ColorModel> colors;
@@ -33,8 +30,6 @@ class ColorPalette extends cp.ColorPalette {
 
   /// Constructs a [ColorPalette] from [colors].
   factory ColorPalette.from(List<Color> colors) {
-    assert(colors != null);
-
     return ColorPalette(List<ColorModel>.from(
         colors.map((color) => RgbColor.fromColor(color))));
   }
@@ -72,21 +67,12 @@ class ColorPalette extends cp.ColorPalette {
     bool growable = true,
     bool unique = false,
   }) {
-    assert(seed != null);
-    assert(distance != null);
-    assert(numberOfColors != null && numberOfColors > 0);
-    assert(
-        hueVariability != null && hueVariability >= 0 && hueVariability <= 360);
-    assert(saturationVariability != null &&
-        saturationVariability >= 0 &&
+    assert(numberOfColors > 0);
+    assert(hueVariability >= 0 && hueVariability <= 360);
+    assert(saturationVariability >= 0 &&
         saturationVariability <= 100);
-    assert(brightnessVariability != null &&
-        brightnessVariability >= 0 &&
+    assert(brightnessVariability >= 0 &&
         brightnessVariability <= 100);
-    assert(perceivedBrightness != null);
-    assert(growable != null);
-    assert(unique != null);
-
     return ColorPalette(_cast(
       cp.ColorPalette.adjacent(
         RgbColor.fromColor(seed),
@@ -128,21 +114,12 @@ class ColorPalette extends cp.ColorPalette {
     bool growable = true,
     bool unique = false,
   }) {
-    assert(seed != null);
-    assert(numberOfColors != null && numberOfColors > 0);
-    assert(
-        hueVariability != null && hueVariability >= 0 && hueVariability <= 360);
-    assert(saturationVariability != null &&
-        saturationVariability >= 0 &&
+    assert(numberOfColors > 0);
+    assert(hueVariability >= 0 && hueVariability <= 360);
+    assert(saturationVariability >= 0 &&
         saturationVariability <= 100);
-    assert(brightnessVariability != null &&
-        brightnessVariability >= 0 &&
+    assert(brightnessVariability >= 0 &&
         brightnessVariability <= 100);
-    assert(perceivedBrightness != null);
-    assert(clockwise != null);
-    assert(growable != null);
-    assert(unique != null);
-
     return ColorPalette(_cast(
       cp.ColorPalette.polyad(
         RgbColor.fromColor(seed),
@@ -200,32 +177,22 @@ class ColorPalette extends cp.ColorPalette {
     num maxBrightness = 100,
     bool perceivedBrightness = true,
     bool distributeHues = true,
-    num distributionVariability,
+    num? distributionVariability,
     bool clockwise = true,
     bool growable = true,
     bool unique = false,
   }) {
-    assert(numberOfColors != null && numberOfColors > 0);
-    assert(colorSpace != null);
-    assert(minHue != null && minHue >= 0 && minHue <= 360);
-    assert(maxHue != null && maxHue >= 0 && maxHue <= 360);
-    assert(minSaturation != null &&
-        minSaturation >= 0 &&
+    assert(numberOfColors > 0);
+    assert(minHue >= 0 && minHue <= 360);
+    assert(maxHue >= 0 && maxHue <= 360);
+    assert(minSaturation >= 0 &&
         minSaturation <= maxSaturation);
-    assert(maxSaturation != null &&
-        maxSaturation >= minSaturation &&
+    assert(maxSaturation >= minSaturation &&
         maxSaturation <= 100);
-    assert(minBrightness != null &&
-        minBrightness >= 0 &&
+    assert(minBrightness >= 0 &&
         minBrightness <= maxBrightness);
-    assert(maxBrightness != null &&
-        maxBrightness >= minBrightness &&
+    assert(maxBrightness >= minBrightness &&
         maxBrightness <= 100);
-    assert(distributeHues != null);
-    assert(clockwise != null);
-    assert(growable != null);
-    assert(unique != null);
-
     return ColorPalette(_cast(
       cp.ColorPalette.random(
         numberOfColors,
@@ -277,20 +244,12 @@ class ColorPalette extends cp.ColorPalette {
     bool growable = true,
     bool unique = false,
   }) {
-    assert(seed != null);
-    assert(numberOfColors != null && numberOfColors > 0);
-    assert(
-        hueVariability != null && hueVariability >= 0 && hueVariability <= 360);
-    assert(saturationVariability != null &&
-        saturationVariability >= 0 &&
+    assert(numberOfColors > 0);
+    assert(hueVariability >= 0 && hueVariability <= 360);
+    assert(saturationVariability >= 0 &&
         saturationVariability <= 100);
-    assert(brightnessVariability != null &&
-        brightnessVariability >= 0 &&
+    assert(brightnessVariability >= 0 &&
         brightnessVariability <= 100);
-    assert(perceivedBrightness != null);
-    assert(growable != null);
-    assert(unique != null);
-
     return ColorPalette(_cast(
       cp.ColorPalette.splitComplimentary(
         RgbColor.fromColor(seed),
@@ -325,11 +284,6 @@ class ColorPalette extends cp.ColorPalette {
     bool growable = true,
     bool unique = false,
   }) {
-    assert(colorPalette != null);
-    assert(insertOpposites != null);
-    assert(growable != null);
-    assert(unique != null);
-
     return ColorPalette(_cast(
       cp.ColorPalette.opposites(
         colorPalette,
@@ -349,7 +303,7 @@ class ColorPalette extends cp.ColorPalette {
         other is List<ColorModel> ||
         other is List<Color>);
 
-    List<ColorModel> colors;
+    late List<ColorModel> colors;
 
     if (other is ColorPalette) {
       colors = other.colors;
@@ -368,16 +322,11 @@ class ColorPalette extends cp.ColorPalette {
   /// class.
   static List<ColorModel> _cast(
     cp.ColorPalette palette, {
-    @required bool growable,
-    @required bool unique,
+    required bool growable,
+    required bool unique,
   }) {
-    assert(palette != null);
-    assert(growable != null);
-    assert(unique != null);
-
     final colors = palette.colors.map<ColorModel>((color) {
-      ColorModel castColor;
-
+      late ColorModel castColor;
       final colorValues = color.toListWithAlpha();
 
       if (color is cp.CmykColor) {
@@ -392,6 +341,8 @@ class ColorPalette extends cp.ColorPalette {
         castColor = HspColor.fromList(colorValues);
       } else if (color is cp.LabColor) {
         castColor = LabColor.fromList(colorValues);
+      } else if (color is cp.OklabColor) {
+        castColor = OklabColor.fromList(colorValues.cast<double>());
       } else if (color is cp.RgbColor) {
         castColor = RgbColor.fromList(color.toPreciseListWithAlpha());
       } else if (color is cp.XyzColor) {
